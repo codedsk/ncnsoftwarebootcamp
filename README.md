@@ -1,2 +1,2 @@
 # ncnsoftwarebootcamp
-lectures for the recordings of the ncn software bootcamp
+lectures and assignments for the video recordings of the ncn software bootcamp
