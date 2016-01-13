@@ -12,18 +12,18 @@ program, they first had to write a letter to your professor, include $10, then
 these guys would go find your program, copy it on to magnetic tape, and then
 they would send you the copy. Then you got to load it on your computer, fight
 with compiling it and understanding what it was doing. As you can imagine, not
-many people were up for all that work, so we can probably cound on one hand how
+many people were up for all that work, so we can probably count on one hand how
 many times the program was run by people outside of the group. About 15 years
 later this same simulator was placed on nanohub.org with a graphical user
 interface and when we look at it now, we can see that there is a community of
-people interested in it. there are over 1500 people who have run it, it has
-been cited a number of times, people are asking questions about it and writing
+people interested in it. There are over 1500 people who have run it, its been
+cited a number of times, and people are asking questions about it and writing
 reviews. So while the magnetic tape cost $10, having a live tool that others
-can run and build upon is priceless. This is really true because as you perform
-your research, one of the things you will have to keep in mind is the impact
-that your research has on the field and the world. A lot of people say their
-research has impact or has a bunch of people using it. Putting up tools on
-nanohub allows you to prove it.
+can run and build upon is priceless. And this is really true, because as you
+perform your research, one of the things you will have to keep in mind is the
+impact that your research has on the field and the world. A lot of people say
+their research has impact or has a bunch of people using it. Putting up tools
+on nanohub allows you to prove it.
 
 The nanohub workspaces can run simulation tools, but one of the things we
 require is that the tools have a graphical user interface. This is where the
@@ -31,8 +31,8 @@ Rappture Toolkit comes in. Rappture stands for the Rapid Application
 Infrastructure. It's an open source toolkit that allows users to quickly build
 graphical user interfaces for their software simulation tools. It focuses on
 collecting inputs from the user, running the simulation software, and plotting
-the outputs for the user. We've written a number of language bindings so it
-will work with your favorite programming language.
+the outputs for the user. We've written a number of language bindings so it'll
+work with your favorite programming language.
 
 On nanoHUB we've deployed hundreds of tools using Rappture and there are a lot
 of features you can take advantage of.
@@ -40,7 +40,7 @@ of features you can take advantage of.
 There are three parts to Rappture. The Builder helps you put together your
 graphical user interface and generates a tool description file called tool.xml.
 The Runner launches a graphical user interface for your tool based on the
-widgets specified in the tool.xml file. It allows the user to run the simuation
+widgets specified in the tool.xml file. It allows the user to run the simulation
 and generate a run.xml file which holds the output of the simulation. The
 Runner reads the run.xml file to visualize the output of the simulation. Lastly
 the tester allows users to setup regression tests for their simulation tool.
@@ -50,7 +50,7 @@ building a Rappture based graphical user interface. 1. Drag and drop your input
 controls over to the tool interface section. 2. Next fill in a little bit of
 information about the input parameters like parameter names, descriptions, and
 default values. Once you have all of your input parameters specified, preview
-the gui. Lastly, save the gui description to a tool.xml file.
+the interface. Lastly, save the interface description to a tool.xml file.
 
 
 Let me do a little demo for you. We'll build a graphical user interface for a

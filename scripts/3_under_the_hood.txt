@@ -62,7 +62,7 @@ results by using Rappture "put" commands. Lastly we save the run.xml file by
 calling the "result" command and exit the program.
 
 One more note. In our program we were using strings to specify where to read or
-store values in the xml file. Rappture using a pretty simple xml path location
+store values in the xml file. Rappture uses a pretty simple path naming
 scheme to identify locations in the xml file. It mainly consists of reading the
 tag names of the xml file and placing id names inside of parenthesis. So to get
 the value 300K in this first example, we would read the xml tag names and id

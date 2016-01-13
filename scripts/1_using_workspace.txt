@@ -52,10 +52,10 @@ flag. After you share the workspace, it will show up in the other person's My
 Session module on their Dashboard and they can open the session to view it.
 
 Inside of the workspace there is a start menu that gives you access to a lot of
-the basic software, but the real power lies in the terminal window. There is a
-button to launch a new terminal window at the bottom of the workspace. The
-workspaces also include a number of popular editors including vi, emacs, and
-geany.
+the available basic software, but the real power lies in the terminal window.
+There is a button to launch a new terminal window at the bottom of the
+workspace. The workspaces also include a number of popular editors including
+vi, emacs, and geany.
 
 If you come across a piece of software that you need for your research but
 doesn't appear to be installed in the workspace you can try looking for it
