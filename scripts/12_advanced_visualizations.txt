@@ -1,0 +1,60 @@
+Rappture includes a numbre of objects to help you visualize complicated data.
+If your tool produces molecular output there are two ways to visualize it using
+the molecule viewer. the first way is to describe the atoms location inside of
+the run.xml file by using <atom> tags. for each atom, you specify the symbol
+and the xyz location of the atom in the 3 dimensional space.
+
+A better way is to use the <pdb> tag and include data using the PDB format. PDB
+stands for the Protein Data Bank and their file format has become of the
+standard ways of describing molecules. Generally a program you are running will
+automatically generate the pdb file for youm and you can use a file like the
+put_file function to read the pdb file from disk and include it in your run.xml
+file.
+
+You can also visualize data on a 2 dimensional rectangular grids. These are
+often referred to as fields and meshes. First you define a mesh or a grid,
+which specifies the x and y location of where the data points exists. Next, for
+each x and y location you specify the value at that location. This is the z
+data or the field. In a lot of cases the mesh is easy to define because it is
+what we call a uniform rectangular grid. This means that the x values are
+uniformly or evenly spaced out along the x axis and the y values are uniformly
+or evenly spaced out along the y axis. This makes it really easy to define the
+mesh.
+
+In the run.xml file, you create a <mesh> section, give it a dimension of 2,
+because the mesh has an x and y axis. Next we describe the min, max, and number
+of points on each axis, just like using the linspace command in MATLAB or
+Octave. In the end our xml will look like this, with a min, max and numpoints
+tag. You can set this up in your program by using hte put function, and giving
+it the path to the xaxis min, xaxis max, and xaxis numpoints.
+
+Once you have your mesh defined, you can define your field, the data you want
+placed at each point of the mesh. You'll add the skeleton for the <field>
+object xml to your tool.xml file. In the skelton for your field, you'll
+reference the mesh that you created earlier, output.mesh. The only parts you
+won't be able to fill in are the values. Inside your program you'll write code
+like this to reshape your z matrix, print the values of the matrix to a string,
+and then include that string in the run.xml file at the field's value node.
+
+There are a bunch of other types of fields and meshes you can define besides
+uniform rectangular grids. Rappture can handle isosurfaces and streamlines. and
+a number of other grid types, specifically many of the types from VTK. If youre
+ever in doubt as to how to define your meshes and grids, you can visit the
+Rappture documentation linked here to see examples of what the xml needs to
+look like.
+
+Speaking of VTK, You can include VTK formatted data files as your field and
+Rappture can visualize that. The VTK file format is pretty standard and
+sometimes tools output their data in that format. You can use the put file
+method to include that type of data in your run.xml file and Rappture can
+visualize it.
+
+Rappture has an output type called sequences. It allows you to show a number of
+images or curves as a time series kind of like a movie. It is a useful object
+if you want to show how an output changes over time.
+
+For example, if you have a number of curves that you generated, you could put
+them into a sequence. You would give the sequece an index label that would show
+us in the graphical user interface, and each element of the sequence would be a
+separate curve object. Pressing the play button in the gui would show how the
+curve changed over time.

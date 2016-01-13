@@ -1,0 +1,75 @@
+I'd like to tell you about one more feature in Rappture that we've been working
+on recently. It has to do with Uncertainty Quantification.
+
+Most of the simulation tools that people build accept exact values for numeric
+input, but we often run into situations where we don't know the exact value for
+an input. Inputs could be approximations from a previous calculation,
+measurements from experiments that themselves included error, or variation that
+the user would like to include in the input. 
+
+In all of these cases, getting a simulation result for one input value doesn't
+tell the whole story. It begins to give us information about how our
+computational model reacts to inputs, but we really need to run multiple
+simulations with varying input values to get a more full understanding of how
+the error in our input changes the output of our model.
+
+This is where Uncertainty Quantification comes in.  As the name suggests, we
+are trying to quantify the uncertainty of our inputs or our model. We want to
+see how uncertainty or error propagates through our system. If there are
+multiple uncertainties in the system, we'd like to know which ones affect the
+outputs the most. This is known as Sensitivity Analysis.
+
+Inside Rappture, we've been working on including ways for people to describe
+uncertainty for inputs by using a library named PUQ. PUQ is a library developed
+as a part of he PRISM project that provides different methods for performing
+uncertainty quantification. It is an open source project, so you can download
+the library from PyPI, but we've baked it right into Rappture so you can enable
+your users to run simulations that incorporate uncertainty.
+Let's check out how it works!
+
+Consider a typical Rappture based simulation tool that accepts numbers as
+inputs. The user running a simulation would enter an exact value and the output
+would also be an exact value or a curve showing the model's response to that
+single value.
+
+With the same tool, we can enable UQ for the inputs and allow simulation users
+to provide a probability distribution as an input instead of an exact value for
+numeric inputs. After running the simulation, three outputs will be produced.
+1. The user will get the values that were generated from all of the runs just
+   as before.
+2. A Response Function or surface will be genereated showing how the output
+   changed with the different inputs.
+3. And an output probability or pdf showing the likelihood of the output given
+   the input distribution.
+
+Enabling UQ in a Rappture tool is pretty easy.  First, in your tool.xml, add a
+<uq> tag with true in it. This will tell the Rappture GUI to show users an icon
+next to all number inputs. When a user clicks on the the icon, they can choose
+between using an exact value which performs no uq for that input or describing
+the input using a uniform distribution or gaussian distribution which both
+perform uq for that input. With a uniform distribution, you describe the input
+using a minimum and maximum value and with a gaussian distribution, you
+describe the input using a mean and standard deviation.
+
+Next, click the simulate button. When UQ is enabled, the Rappture GUI shows a
+summary of the type of run it is about to perform. Currently Rappture supports
+performing Generalized Polynomial Chaos with Smolyak sparse grids. This allows
+us to run your Rappture program for UQ without you needing to change anything
+inside your program. The GUI also tells you the degree of polynomial response
+it is going to build. This is important because it influences the number of
+jobs that will be kicked off and the accuracy of the results. If the values
+look good to you, you can launch the jobs.
+
+From here, your jobs are run using Submit and Pegasus. When completed, the jobs
+will be automatically combined into one run.xml file, showing the output values
+from all of the runs, the response surface, and the probability or pdf.
+(Show split screen of screenshots of output for number and curve)
+
+Currently we only support UQ inputs that are numbers. On the output side we can
+show UQ results for numbers, curves and fields. If the output is a number, you
+get the values from all runs, a response function (with RMSE showing error),
+and a PDF. If the output is a curve, you get all of the curves from all runs, a
+sequence of curves, and shaded probability curves showing where 50% and 95% of
+the output occurs. Rappture UQ doesn't handle multiple curves on the same plot.
+In that case, you'll see a sequence of outputs from each run. The same thing
+happens with fields, they are also put into a sequence too.

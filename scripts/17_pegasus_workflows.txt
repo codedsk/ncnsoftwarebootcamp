@@ -1,0 +1,27 @@
+A few minutes ago we saw how we could perform a sweep using the submit command.
+But there was one part of the process I left out.
+
+After you type the submit command and press the Enter key, submit goes through
+the command line flags and determines how and where to run the job. If you asked
+to sweep a parameter, submit uses a program named Pegasus to create and manage
+the multiple jobs as a type of wideband workflow.
+
+(show slide of pegasus details, who made it, bindings, features.)
+
+Pegasus takes care of transferring files and executables between the HUB and
+the grid and tracking their progress, capturing provenance and performance
+information about each step of the workflow.
+
+(show picture of the path from workspace to grid, blowup image of the workflow
+in a thought bubble to the left, with little files to denote the provenance and
+performance info being stored by pegasus)
+
+For many of the tools on hubs, these steps are transparent to the user, but
+developers can take advantage of Pegasus in two ways. Developers can allow Submit
+to build a workflow for them, as shown earlier, or write their own workflow.
+Let's investigate how to build your own workflow and get Pegasus to run it on
+the grid.
+
+(How does Pegasus Work slides)
+
+

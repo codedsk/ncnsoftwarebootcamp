@@ -1,0 +1,43 @@
+Throughout all of our examples, we have been using the Rappture Builder to
+create the tool description file for our graphical user interfaces. While we
+can put together most of our gui with the builder, there are still some areas
+that the builder doesn't handle. Take for example the Number object. In the
+documentation, they talk about supporting preset values, but these controls are
+not available in the loader.
+
+But you can add them in by hand. In the tool.xml file, you can add the proper
+xml to allow for preset values.
+
+There are a couple of other objects that are not available in the builder. One
+of them is the loader.  The purpose of the loader is to provide preset values
+for other objects in the gui. You can use it to setup examples or allow others
+to upload their own input to simulate with. For instance, if we had a gui with
+three inputs, two strings and a number, we could create setup examples that
+would change both strings to hold preset input values, change only the first
+string, change only the second string, or reset the inputs.
+
+In your tool.xml file, you can include a loader object by adding a <loader>
+tag. Inside the tag, there is the usual stuff, a label and a description.
+You'll have to define some example files and those are what show up in the
+dropdown menu of the widget. These example files live in a directory named
+examples. You can also define a new.xml example to reset the values for the
+user. Just like all of our other objects, you need to set a default example to
+load.
+
+To make the example file, copy the tool.xml file into the examples directory,
+then edit it to include an <about> section and a <current> tag with a value.
+The example files hold a current value that is to be loaded into the widget. In
+this way, the example files are similar to the driver.xml file. The label in
+the about section holds the name that the user will choose from the drop down
+widget.
+
+Let's take a look at another example. Here is a tool that include a loader, but
+when the user changes the device type, it changes a whole pane of inputs. This
+loader loads different <structure> elements at the bottom of the gui, but
+doesn't affect the inputs at the top of the gui.
+
+With the loader, you can also allow the user to upload input values by
+specifying which parameter should hold the uploaded information. This is
+helpful for programs that require a complex input deck. You can allow the user
+to upload a file. Similarly, you can allow the user to download an input as
+well.

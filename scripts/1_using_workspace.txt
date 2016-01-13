@@ -1,0 +1,84 @@
+Our first task is to introduce you to the simulation workspaces
+
+You can get to the workspace by first logging into the hub and then locating
+the My Tools module on your dashboard. In the All Tools tab, there should be a
+tool called "Workspace". You can use the launch button to start a new workspace
+inside of your browser.
+
+The workspace is a linux desktop running somewhere here on campus that you can
+view and manipulate from within your web browser. We loaded it up with software
+that people commonly use to build simulation tools. We've also connected the
+workspaces to super computing resources both on campus and available at other
+universities and research facilities. And, as a developer, you get some disk
+space so you can build your own simulation tools and do research.
+
+Individual workspaces stay alive for about 14 days if not in use. This means
+you can close your web browser and come back to the session later by locating
+it on your user dashboard. Open sessions are listed under the My Sessions
+module and can be accessed by clicking the link.
+
+If you want to close your workspace for good, use the terminate button in the
+upper right corner of the workspace. This will close the session for good. You
+can also terminate a workspace by clicking the close button in the My Sessions
+module on your user Dashboard.
+
+Sometimes the size of the workspace is too small to work comfortably in. You
+can resize the workspace by clicking on the shangle in the lower right corner
+and expanding it.
+
+There is also a refresh button that allows you to refresh the view in case you
+start seeing mouse trails.
+
+Lastly, on most HUBs there are two different viewers available, an older Java
+based workspace viewer and a newer HTML5 based viewer. You can switch between
+the two by clicking on the gear in the upper right corner of the viewer.
+
+If you are using the Java viewer, there is a button in the lower right corner
+to pop out the viewer, making it a separate window.
+
+This is convenient if you want the workspace to be the size of your desktop.
+You can click on the pop out button again to pop the window back into the web
+browser. The pop out feature isn't available in the HTML5 viewer.
+
+Another convenient feature of the workspaces is that you can share your
+workspace with someone else. This is helpful when you are working with a group
+of people to solve a problem, or you are in a meeting and want to show off your
+work, but it is only working in your environment right now. You can share your
+screen and let others see what is happening. At the bottom of the workspace web
+page, there is an entry box that accecpts the name of a person to share a
+session with. You can enter the person's name or username. If you dont want the
+person to be able to control the mouse or keyboard, you can set the "Read-Only"
+flag. After you share the workspace, it will show up in the other person's My
+Session module on their Dashboard and they can open the session to view it.
+
+Inside of the workspace there is a start menu that gives you access to a lot of
+the basic software, but the real power lies in the terminal window. There is a
+button to launch a new terminal window at the bottom of the workspace. The
+workspaces also include a number of popular editors including vi, emacs, and
+geany.
+
+If you come across a piece of software that you need for your research but
+doesn't appear to be installed in the workspace you can try looking for it
+using ChUSE. There is some software that we have to manually install, or we
+have multiple versions of the software installed, so you need to setup your
+workspace environment to properly find it. ChUSE lets you see and search for
+software packages that we have manually installed. Once you find a piece of
+software that you want to have your workspace environment setup for, click the
+checkbox and every new xterm you open will be setup to run that piece of
+software. Some important environments we will be using include Rappture and
+Matlab 8.4
+
+Your workspace and desktop environments are different. They don't share a
+common hard drive. There are a couple ways to move files between your workspace
+and your desktop. An easy way to download files from your workspace environment
+to your desktop is to use "exportfile". You give the name of the file you want
+to export and it will download the file from the workspace to your desktop.
+
+To upload a file from your desktop to the workspace environment you can use the
+importfile command. This will open a popup web page asking you to choose the
+file you want to upload and transfer it from your desktop to the workspace
+environment.
+
+Lastly, you can use sftp to transfer files. You just need your hub username and
+password and an sftp client.
+

@@ -1,0 +1,68 @@
+In the previous presentations we've been using some of the most popular
+Rappture objects including the Integer, Number and Curve. But the Rappture
+library includes many other widgets to help you design a graphical user
+interface for your simulation tool. The Choices widget is a dropdown menu that
+allows the user to choose an option from a prepared list. In the Builder, the
+widgets looks like this. You add the options that the user can pick from,
+giving each one a label and a value.
+
+
+When building a graphical user interface where the user needs to pick a certain
+elemnt, the periodic table widget can come in handy. From the builder, you can
+control what information about the chosen element is returned to your program.
+You can also control which elements are allowed to be chosen, whether they be
+metals, or noble gases, or halogens.
+
+The Notes widget allows the developer to add documentation to their tool by
+embedding simple HTML. The HTML can include pictures, text, tables, and links.
+Nothing too fancy.  This is good for introducing what the tool does, including
+small sets of instructions, and linking to external resources where the user
+can learn more information.
+
+If you include links in the HTML note, when the user clicks the link, it is
+launched in a popup window, so you can run the tool and review the external
+link at the same time.
+
+You can group together related inputs by using the Groups object. To group
+together inputs, place them under the same group object in the builder and give
+your group object a label and description. When the gui is launched, the inputs
+will be placed next to each other and enclosed within the group to signify that
+they are associated with each other. The label will show up in the header of
+the group and the description will show up when the user does a mouse-over on
+the group.
+
+If you group together multiple groups, you get a layout that uses tabs instead.
+This works if your group only contains other groups. Also be careful
+because this approach may hide inputs from the user.
+
+If you have a few inputs that you want to group together, the Groups object
+works ok. Phases also allow you to group inputs in a different way. The Phase
+object is good for walking the user through setting up a simulation run. Often
+it makes sense to guide the user through the steps of setting up the inputs and
+running the simulation. Phases provide a way for you to organize the inputs for
+the user.
+
+You may have noticed that some of the objects allow you to enable or disable
+them. This is helpful when you want to hide inputs from the user when it doesnt
+make sense to fill them in. This is commonly done by evaluating a condition,
+like if a boolean value is true or false. In this example, if the boolean is
+false, or off, or no, the other two numeric inputs are disabled. If the boolean
+is true, on, or yes, then the two numeric inputs are enabled. To enable or
+disable an object based on a boolean, first copy the path of the boolean
+object, and use CTRL-Y to paste the path into the Enable field of the object
+you want to enable or disable.
+
+The enable condition doesn't have to be true or false value, it could be an
+expression that evaluates to true or false. In this case we can set the
+High-energy lifetime field to be enabled only if the Tight-binding Energy field
+is greater than 3.0eV. To do this we would use the expression shown on the
+right side of the slide. It says to get the value of the object at the provided
+path, convert it to eV (:eV) then check if it is greater than 3. if it is
+greater than 3, the expression will evaluate to true and the High-energy
+lifetime field will be enabled.
+
+The same approach can be taken with groups. Groups can be enabled or disabled
+with booleans and expressions. Be sure not to got crazy including enables and
+disables in your graphical user interface. These expressions really slow down
+the load times of Rappture guis which affects the experience of the user.
+

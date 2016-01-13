@@ -1,0 +1,64 @@
+On the HUB we see a lot of new tool developers building tools with what we call
+the "wall of inputs" where every input is listed one after the other. This
+format makes the inputs hard to understand. Instead I want to encourage you to
+build tools that look like this, with pictures and hotspots. The way you do
+this is with drawings.
+
+Similar to the loader, drawings are not available in the rappture builder, so
+you'll have to edit the xml itself. You start off with the <drawing> tag and an
+about section. Like all Rappture objects, the drawing has a label and
+description. There are three parts to the drawing. The background section, the
+components section which can include hotspots, lines, shapes, and text, and the
+substitutions section.
+
+The background section describes the background color and sets up the
+coordinate system. By default the coordinate system goes from 0,0 in the upper
+left corner to 1,1 in the lower right corner. You can change that if you want
+by specifying the new coordinate system in the xml.
+
+The components section holds all of the pieces of your drawing. In your drawing
+you can draw lines by specifying x,y coordinate pairs for the points of the
+line. You can also specify the color of the line, line width and if you want
+arrows on the line.
+
+You can draw rectangles by specifying the upper left and lower right
+coordinates of the rectangle. It also allows you to specify an outline color, a
+fill color and a line width.
+
+Sometimes it is easier to just include a picture from somewhere else. To do
+that, use the picture component and specify an anchor point for the picture, or
+specify the coordinates of the upper left and lower right corders of the
+picture, along with the file path of the image.
+
+If you have a number of controls that all relate to a particular input, you can
+combine those controls into a hotspot in a drawing. When the user clicks the
+hotspot, the controls are revealed. It is similar to using the groups to group
+inputs together.
+
+To do this, you'll still need to have a control in your xml for the inputs.
+Inside of the drawing, you can reference the control in a hotspot. When you
+bring up the gui, rappture will recognize that the control is being used in the
+drawing and won't render it twice.
+
+You can include text in your drawing by supplying the coordinates and an anchor
+of where to place the text. You can also specify the color and font.
+
+The last section is the substitutions. Substitutions are a way of linking
+components from outside of the drawing to components inside of the drawing. You
+can think of them as variables for your drawings. You start by defining an
+input outside of the drawing. like a string with some default text. Next if you
+have an item inside of the drawing that you would like to have reference the
+string outside of the drawing, you can create a variable inside of the
+substitutions section. The variable needs a name and a path. The path lists the
+control outside of the drawing that the variable is associated with. The name
+is how the variable will be referenced inside of the drawing. In the text
+component, we reference the variable using a $ and cury brackets.
+
+You can also include more advanced substitutions that include a little bit of
+logic. In this example, a boolean switch controls the background color of the
+text component. To do this, first declare the boolean input in the input
+section of the tool.xml file. next create a variable substitution that
+references the path of the boolean control and has the name color. Next add a
+map from yes, for when the boolean is turned on or set to true, to the color
+yellow. Add another map from no, when the boolean is turned off, to the color
+gray. Lastly set the fill inside of the text component to the color variable.
