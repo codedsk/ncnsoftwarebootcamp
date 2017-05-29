@@ -1,0 +1,89 @@
+Typically, when people write programs in MATLAB or Octave, they need to get
+some input from the user.
+
+So you run the program from the command line, and it asks you for the inputs,
+one at a time.
+(click, click)
+
+Then it does its processing and calculations and ends. To see the output, the
+user needs to look in an output file, and probably also take the output results
+to some other program to plot or visualize or further organize the output.
+
+If you are building an application like this, a better way to is provide the
+user with a graphical user interface that guides them through setting up the
+simulation and then after running the simulation, visualizes the results so
+they don't have to take the data to yet another application to understand it.
+This is what Rappture applications do.
+
+many times, these command line simulations can be easily mapped onto a Rappture
+interface. The first step in doing this is to understand what information you
+are asking from the user (these are your simulation inputs), what information
+you plan to give back to the user (these are your simulation outputs), and what
+is your "science code" or the core calculations that your simulation does.
+
+In this example, we can map the fermi level to a number in the Rappture interface
+
+the temperature to another number in the Rappture interface
+
+the output chart of fermi dirac function values to a curve in the Rappture
+interface,
+
+and everything left in the middle is considered our science code.
+
+Next we can use the Rappture Builder to assemble our graphical user interface.
+We can drag and drop a number into our inputs for the temperature input.
+
+and another number for your Fermi level input. you see we have filled it out
+with a default value and min/max values.
+
+and we can pull over a curve object into the output section to represent the
+output table.
+
+Always fill out the tool info section with a title, description and language
+and save the tool.xml and template file.
+
+In the template file, there will be a section at the top where the program
+retrieves the user set values from the graphical user interface and at the
+bottom, your science calculations will be stored back in the xml file.
+
+You'll add your science code in the middle, where it says "Add your code here"
+
+You'll probably need to do some renaming of your variables to make sure they
+match up with the variable names used in the template. Like here, instead of T,
+we use the variable name temperature.
+
+and instead of using the variables x and y, it may be easier if we use the mode
+descriptive variables E and f
+(click, click)
+
+with out template program updated, we are ready to run the application
+
+on the command line, type the rappture command and press enter. this will
+launch the rappture interface based on the tool.xml file.
+
+The user can then adjust the input values and press the "Simulate" button.
+
+This generates a driver.xml file that is handed to your program. Your program
+read the input values from the driver.xml file, performs the science
+calculation, and generates a run.xml.
+
+The run.xml file contains the results of the calculation.
+
+This file is then read by the graphical user interface and the output inside is
+visualized.
+
+Lastly, the run.xml file is stored in the results directory.
+
+If you are using matlab from within rappture, and something goes wrong with
+your program, matlab will drop back into its shell to all you to debug the
+problem.
+
+It will wait for you to enter commands.
+
+To exit this debugging mode, click the Abort button in Rappture and it will
+usually tell your what the error was.
+
+At this point, you can run the program by hand. look for the driver.xml file it
+left in your directory, make sure you have issued the 'use rappture' command,
+and launch matlab with this command where you specify the name of the
+driver.xml file and your program name.

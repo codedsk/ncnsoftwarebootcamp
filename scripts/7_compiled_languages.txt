@@ -1,12 +1,15 @@
 There are two major types of languages. Interpreted languages like Python,
 Octave, MATLAB, and Tcl, where you write a script and another program reads
-each line one at a time and interprets it on the fly. And Compiled languages
-like C, Fortran, and Java, where you hand your program over to a compiler and
-the compiler reads the code, checks for errors across the whole program, turns
-your program into machine code and stores the machine code in a file that you
-can execute, called an executable. Both have advantages and disadvantages. For
-the most part we have focused on writing programs and building guis that use
-interpreted languages. Here, we'll shift focus over to the compiled languages.
+each line one at a time and interprets it on the fly.
+
+And Compiled languages like C, Fortran, and Java, where you hand your program
+over to a compiler and the compiler reads the code, checks for errors across
+the whole program, turns your program into machine code, and stores the machine
+code in a file that you can execute, called an executable.
+
+Both have advantages and disadvantages. For the most part we have focused on
+writing programs and building guis that use interpreted languages. Here, we'll
+shift focus over to the compiled languages.
 
 Two popular examples of compiled languages are C and Fortran. You'll hear some
 people balk at the use of languages like C and Fortran. Some people will say
@@ -17,38 +20,83 @@ languages still depend on C and Fortran based libraries.
 
 If you have a program writen in C, you can use the gcc compiler to compile it
 into an executable. The general command is shown at the top of the slide. The
-command include some flags that give the compiler hints as to how to compile
+command includes some flags that give the compiler hints as to how to compile
 the code. The -g flag tells the compiler to include debugging information in
 the executable. This is helpful if we have to figure out why our program is not
 running properly. Next we tell the compiler the name of our source code file,
-plinko.c. Next we use the -o flag to tell the compiler to output an executable
-file named "plink". Lastly we tell the compiler to link against the math
-library, using the -lm flag. If the compiling works, we will have a file named
-"plinko" in our directory. We can run the program on the command line by giving
-the path to the executable, ./plinko.
+plinko.c. We use the -o flag to tell the compiler to output an executable
+file named "plinko". Last, we tell the compiler to link against the math
+library, using the -lm flag.
+
+If the compiling works, we will have a file named "plinko" in our directory. We
+can run the program on the command line by giving the path to the executable,
+./plinko.
+(click, click, click)
 
 Similarly, we can compile fortran code using the gfortran compiler. It takes
 very similar flags. You may recognize the -g flag, telling the compiler to
 include debugging information, and the -o flag, telling the compiler what to
-name our executable file it outputs. We can run the fortran program in the same
-way on the command line by giving the path to the executable.
+name our executable file it outputs.
 
-Typically, as a developer, you spend a lot of time compiling your code, and
-fixing errors and compiling again. Remembering and typing all of the compiler
-flags can be tedious. Instead you can use something called a Makefile to store
-your common compiling instructions. Instructions in a Makefile have three
-parts. The target is like a label for the instruction. It is followed by a
-colon and a list of dependencies. On the next line, indented with a TAB, is the
-command or commands to run for the instruction. In the example makefile shown
-on the slide, there are two instructions. The first is a target named plinko.
-This target is used to compile the plink executable. Our gcc command is listed
-right under the target. To use the make file to compile the plinko executable,
-we can type "make" or "make plink", explicitly calling the target we want to
-compile. So now, instead of typing out the whole line to compile the code, we
-can just type "make". And if we want to remove our executable, we can call the
-clean target by typing "make clean". Some things to note about Makefiles. The
-file must be named "Makefile" with a capitol M, and the commands must be
-indented with a TAB, not spaces.
+We can run the fortran program in the same way on the command line by giving
+the path to the executable.
+(click, click, click)
 
-If you are running a C or fortran program and it doesn't seem to be working
-properly, you may need to run it in a debugger 
+Typically, as a developer, you spend a lot of time compiling your code (click), and
+fixing errors (click) and compiling again.
+
+Remembering and typing all of the compiler flags can be tedious.
+
+Instead you can use something called a Makefile to store your common compiling
+instructions. Instructions in a Makefile have three parts. The target is like a
+label for the instruction. It is followed by a colon and a list of
+dependencies. On the next line, indented with a TAB, is the command or commands
+to run for the instruction. In the example makefile shown on the slide, there
+are two instructions. The first is a target named plinko.  This target is used
+to compile the plinko executable. Our gcc command is listed right under the
+target.
+
+To use the makefile to compile the plinko executable, we can type "make" or
+"make plinko", explicitly calling the target we want to compile. So now, instead
+of typing out the whole line to compile the code, we can just type "make".
+
+And if we want to remove our executable, we can call the clean target by typing
+"make clean". Some things to note about Makefiles. The file must be named
+"Makefile" with a capitol M, and the commands must be indented with a TAB, not
+spaces.
+
+If you are running a C or Fortran program and it doesn't seem to be working
+properly (click, click), you may need to run it in a debugger.
+
+If you compiled your program with the -g flag, it should have all of the
+debugging symbols it needs to run under GDB, the GNU debugger. Start the
+debugger using the gdb command followed by the executable you want to debug.
+
+You can list out the lines of the program using the "l" command.
+
+You can setup break points using the "break" command. This tells the debugger
+where in the program to stop.
+
+Start the program using the "run" command, and it will run until it hits the
+first breakpoint, until it fails, or until it finishes, which ever comes first.
+(click, click, click)
+
+In this example, it hit the first breakpoint on line 13.
+
+We can use the "n" or "next" command to step through each line of our code,
+executing the lines one at a time.
+(click x4)
+
+We can query the value of variables by using the "p" or "print" command.
+(click, click)
+
+If you only want to break when a condition is met, like the drop variable is
+equal to three, you can setup a conditional break point.
+
+and if you want to continue running the program after hitting a break point,
+you can use the "c" or "continue" command. With the continue command, your
+program will keep running until it hits the next break point or until it
+finishes.
+
+With GDB, there are about 6 commands you need to know to be effective. Here is
+a cheat sheet you can refer back to when using the debugger.

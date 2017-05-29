@@ -1,69 +1,90 @@
-Does anyone remember the old Price is Right show game Plinko? The one where you
-have a board full of pegs, and you drop a token from the top of the board, the
-token hits each peg and has a 50% change of going left or right. Eventually the
-token makes it to the bottom of the board and ends up in a bucket. If we think
-about running thousands of test cases, randomly assigning paths through the peg
-board we can build something called a Monte Carlo simulator and get statistics
-about each bucket at the bottom of the board.
+Does anyone remember the old Price is Right show game Plinko?
+
+The one where you have a board full of pegs, and you drop a token from the top
+of the board, the token hits each peg and has a 50% change of going left or
+right. Eventually the token makes it to the bottom of the board and ends up in
+a bucket.
+
+If we think about running thousands of test cases, randomly assigning paths
+through the peg board we can build something called a Monte Carlo simulator and
+get statistics about each bucket at the bottom of the board.
 
 
 We can build a simulator like that in C. Let me briefly explain what is going
-on in this program. All C programs start off by including the header files that
-define extra functions we use in the program. We include these function
-definitions by using the #include directive. Next we declare a constant listing
-the number of levels in our board. the #define directive declares a constant.
+on in this program.
+
+All C programs start off by including the header files that define extra
+functions we use in the program. We include these function definitions by using
+the #include directive.
+
+Next we declare a constant listing the number of levels in our board. the
+#define directive declares a constant.
+
 Constants are kind of like variables, but their values don't vary, they stay
 constant through out the whole program.
+(click, click)
 
 Next we define our main function. It accepts two values, an integer for the
 number of command line arguments and a pointer to the array of command line
-arguments. In this case we won't be using them. When our program runs, the
-first thing it asks the user is how many drops, or simulation runs, they would
-like to perform. We use the printf function to print the text to the screen,
-and then we call the scanf function to read input from the user. In this case,
-the input is an integer and we use the format %d. The input is stored in the
-variable max. If the user gives us unexpexted input, we print bad number, and
-exit the program using the exit function. We exit with a status of 1 to signify
-there was a problem. If we exited with status 0, it would signal that
-everything was ok.
+arguments. In this case we won't be using them.
+
+When our program runs, the first thing it asks the user is how many drops, or
+simulation runs, they would like to perform. We use the printf function to
+print the text to the screen, and then we call the scanf function to read input
+from the user. In this case, the input is an integer and we use the format %d.
+The input is stored in the variable max. If the user gives us unexpexted input,
+we print bad number, and exit the program using the exit function. We exit with
+a status of 1 to signify there was a problem. If we exited with status 0, it
+would signal that everything was ok.
 
 Next we initialize an array that we'll use to keep track of how many tokens
 fall in each bucket. Earlier in our program we declared an array with LEVELS+1
 elements to represent the number of buckets. We use a for loop to iterate
 through each element of our array and set its value to 0. In C, for loops have
 four parts. The initialization sets an initial value for our loop control
-variable, i. This is done once in beginning of the loop. Next, the commands of
+variable, i. This is done once in the beginning of the loop. Next, the commands of
 the loop are performed, setting the array location equal to 0. Next the loop
 control variable is incremented. Lastly, the condition is checked to determine
-if another iteration of the loop should be performed.  Remember that in C array
+if another iteration of the loop should be performed.  Remember that in C, array
 indexing starts at 0. This loop iterated while i < LEVELS+1. Once i is equal to
 LEVELS+1, the loop stops.
 
 Next, for each drop of the token, we want to go through each level of the peg
-board, and decide to go either left or right. We use the pos variable to keep
-track of our ending bucket position and the drand48 function to provide us with
-a random number between 0 and 1. If the number is less than 0.5, then we save
-that as a move to the left side of the peg. If the number is greater than 0.5,
-we save it as a move to the right side of the peg. We use the special augmented
-assignment operator as a shortcut to store the value of pos + 1 or pos + (-1)
-back into the pos variable. We keep repeating this each drop of the token that
-we perform.
+board, and decide to go either left or right.
 
-In C there are two types of styled for comments. The one shown here is the
-block comment which consists of a forward slash followed by a start to start
-the comment, and a star followed by a forward slash to end the comment.
-Everything between the starting and ending marker is considered part of the
-comment, even if it spans to the next line. This style of commenting is good
-for commenting blocks of text. The second style is a line comment. It only has
-a starting marker of two consecutive forward slashes because it ends at the end
-of the line. Next we use a for loop to print out the contents of each bucket.
+We use the pos variable to keep track of our ending bucket position and the
+drand48 function to provide us with a random number between 0 and 1. If the
+number is less than 0.5, then we save that as a move to the left side of the
+peg. If the number is greater than 0.5, we save it as a move to the right side
+of the peg.
+
+We use the special augmented assignment operator as a shortcut to store the
+value of pos + 1 or pos + (-1) back into the pos variable.
+
+We keep repeating this each drop of the token that we perform.
+
+In C there are two styles for comments.
+
+The one shown here is the block comment which consists of a forward slash
+followed by a start to start the comment, and a star followed by a forward
+slash to end the comment.  Everything between the starting and ending marker is
+considered part of the comment, even if it spans to the next line. This style
+of commenting is good for commenting blocks of text. The second style is a line
+comment. It only has a starting marker of two consecutive forward slashes
+because it ends at the end of the line.
+
+Next we use a for loop to print out the contents of each bucket.
+
 Lastly, we return from the function with the value 0 to signal that everything
 is ok.
 
 To compile the code, we use the gcc command with the -g flag to include
 debugging information and the -o flag to specify the name of the output file.
 We include the -lm flag to compile against the math library which is needed for
-the drand48() function. We can run the program with gdb, the gnu debugger.
+the drand48() function.
+
+If we run into problems and need to debug, we can run the program with gdb, the
+gnu debugger.
 
 Lastly, here is a cheat sheet in case you have questions about the syntax for
 different types of statements in C.
