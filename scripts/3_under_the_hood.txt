@@ -1,65 +1,90 @@
 So we just got a taste of how to build a graphical user interface using the
 Rappture Builder, but what's really happening under the hood?
 
-Here's an example tool that accepts two number inputs. When the user clicks
-the simulate button, after a few seconds, we see a curve is generated, but how
-do we get from entering inputs to seeing the output?
+Here's an example tool that accepts two number inputs.
+
+When the user clicks the simulate button, after a few seconds, we see a curve
+is generated, but how do we get from entering inputs to seeing the output?
 
 In the last presentation we showed how to generate a graphical user interface
-using the Rappture Builder. The description of the graphical user interface is
-stored in the file named tool.xml. You can also save a skeleton program to help
-you get started with interfacing your science calculation to the graphical user
-interface. The tool.xml file holds information about the inputs to your program
-and the outputs that your program generates.
+using the Rappture Builder.
 
-When you run the "Rappture" command, it reads the tool.xml file to generate a
-graphical user interface. Next the user fills in the inputs and clicks the
-simulate button. Rappture save the input values to a file named driver.xml. The
-driver.xml file is a copy of the tool.xml file with one difference.
+The description of the graphical user interface is stored in the file named
+tool.xml. You can also save a skeleton program to help you get started with
+interfacing your science calculation to the graphical user interface.
+
+The tool.xml file holds information about the inputs to your program and the
+outputs that your program generates.
+
+When you run the "Rappture" command (click), it reads the tool.xml file to
+generate a graphical user interface.
+
+Next the user fills in the inputs and clicks the simulate button. Rappture save
+the input values to a file named driver.xml.
+
+The driver.xml file is a copy of the tool.xml file with one difference.
 
 It file contains the input values specified by the user and is provided to your
 program.
 
-Your program reads that driver.xml file for the inputs, does its calculations,
-then stores its results in a run.xml file.
+Your program reads (click) that driver.xml file for the inputs, does its
+calculations, then stores its results in a run.xml file.
 
-The run.xml file is a copy of the driver.xml file, but it also includes the
-outputs of the simulation.
+The run.xml file is a copy of the driver.xml file, (click) but it also includes
+the outputs of the simulation.
 
-Next, Rappture reads the run.xml file and visualizes the output for the user.
+Next, Rappture reads (click) the run.xml file and visualizes the output for the
+user.
+
 The run.xml file is then saved in a results directory.
 
-So one more time. First the Rappture command reads the tool.xml file to
-generate the graphical user interface. The user fills in the inputs to the
-simulation and presses the simulate button. Next a driver.xml file is created,
-which hold the input values for the simulation. The driver.xml file is provided
-to your program, which reads the inputs, performs the calculations, then stores
-the outputs back into the xml file and writes the run.xml file to disk. Lastly
-Rappture reads the run.xml file to visualize the output and stores the run.xml
-file in a results directory.
+So one more time.
+
+First the Rappture command reads the tool.xml file to generate the graphical
+user interface.
+
+The user fills in the inputs to the simulation and presses the simulate button.
+Next a driver.xml file is created, which hold the input values for the
+simulation.
+
+The driver.xml file is provided to your program, which reads the inputs,
+performs the calculations, then stores the outputs back into the xml file and
+writes the run.xml file to disk.
+
+Lastly Rappture reads the run.xml file to visualize the output and stores the
+run.xml file in a results directory.
 
 So the run.xml file is a complete record of the simulation run because it holds
-the tool definition, the input values and the output values. Because of this,
-you can use Rappture's -load flag to visualize old simulation results that are
-stored in the run.xml file. You can also use the run.xml file as a tool.xml
-file, because it holds all of the information a tool.xml file does.
+the tool definition, the input values and the output values.
 
-One piece we haven't explained yet is how your program gets invoked. Your
-program will make calls to the Rappture library to interact with the graphical
-user interface.
+Because of this, you can use Rappture's -load flag to visualize old simulation
+results that are stored in the run.xml file.
+
+You can also use the run.xml file as a tool.xml file, because it holds all of
+the information a tool.xml file does.
+
+One piece we haven't explained yet is how your program gets invoked.
+
+Your program will make calls to the Rappture library to interact with the
+graphical user interface.
 
 Inside of the tool.xml file, there is a line named <command>. It holds the
 command that will be invoked to launch your program. In this case it is
-launching a python program. There are two special terms in this command. The
-@tool is a placeholder to specify the directory where the tool.xml file is
+launching a python program. There are two special terms in this command.
+
+The @tool is a placeholder to specify the directory where the tool.xml file is
 located. @driver is the name of the driver.xml file. Both of these will be
-substituted with real paths and filenames. Inside your program, you'll make
-calls to the Rappture library to tell it where the driver.xml file is located.
-In this example, the driver file name is an argument passed to your program. We
-can read the name from the argument vector. After opening the xml file, we can
-use Rappture's "get" commands to retrieve inputs. We can store calculation
-results by using Rappture "put" commands. Lastly we save the run.xml file by
-calling the "result" command and exit the program.
+substituted with real paths and filenames.
+
+Inside your program, you'll make calls to the Rappture library to tell it where
+the driver.xml file is located.  In this example, the driver file name is an
+argument passed to your program. We can read the name from the argument vector.
+After opening the xml file, we can use Rappture's "get" commands to retrieve
+inputs.
+
+Similarly, we can store calculation results by using Rappture "put" commands.
+Lastly we save the run.xml file by calling the "result" command and exit the
+program.
 
 One more note. In our program we were using strings to specify where to read or
 store values in the xml file. Rappture uses a pretty simple path naming

@@ -9,54 +9,79 @@ If you are not on campus, you can use Octave, which is a free clone of matlab.
 It can read most matlab scripts and create plots, but every once in a while,
 there is a function or library that acts different.
 
-Also, there is a tool called OCTAViEw on nanohub. It uses octave in the
-background, and allows you to do simple plotting.
+You can also use Octave from within a Jupyter Notebook. From the New menu,
+start an Octave notebook and you can then enter your octave commands and view
+the output.
 
-MATLAB relies heavily on vectors. There are a few ways to declare vectors. you
-can use the colon syntax where you set a starting value, and increment value
-and an end value. You can also use the linspace() function to produce a
-linearly spaced vector between a start and end value, optionally providing the
-number of points in the the vector. If you forget to include a semicolon at the
-end of a statement, MATLAB will print the result of the statement to the
-screen.
+MATLAB relies heavily on vectors. There are a few ways to declare vectors.
 
-If you want to create a vector with irregular spacing you can place square
-brackets around your comma separated list. Using a vector, MATLAB allows you to
-easily perform vector arithmetic to create new vectors, plots vectors against
-each other, and create matricies.
+You can use the colon syntax where you set a starting value, and increment
+value and an end value.
 
-To define a matrix in MATLAB, use semicolons between the rows. To get the
-transpose of a matrix, use the apostorphe. As long as you follow the default
-linear algebra rules, you can perform arithmetic on matrices just as you would
-by hand. Matlab also provides some functions for creating standard matricies
-like a matrix full of zeros, ones or an identity matrix.
+You can also use the linspace() function to produce a linearly spaced vector
+between a start and end value, optionally providing the number of points in the
+the vector.
+
+If you forget to include a semicolon at the end of a statement, MATLAB will
+print the result of the statement to the screen.
+
+If you want to create a vector with irregular spacing (click) you can place
+square brackets around your comma separated list.
+
+Using a vector, MATLAB allows you to easily perform vector arithmetic to create
+new vectors, plots vectors against each other, and create matricies.
+
+Don't forget, if you want to multiply vectors element by element, you need to
+use the dot operator.
+
+To define a matrix in MATLAB, use semicolons between the rows.
+
+To get the transpose of a matrix, use the apostorphe.
+
+As long as you follow the default linear algebra rules, you can perform
+arithmetic on matrices just as you would by hand.
+
+MATLAB also provides some functions for creating standard matricies like a
+matrix full of zeros, ones, and identity matricies.
 
 Using vectors and matrices you can do a lot of cool operations like
-manipulating pictures. Using MATLAB's image processing tools, you can apply
-filters to images to create different effects like edge detection or a charcoal
-effect. These types of matrix manipulations are how things like the filters on
+manipulating pictures.
+
+Using MATLAB's image processing tools, you can apply filters to images to
+create different effects like edge detection or a charcoal effect.
+These types of matrix manipulations are how things like the filters on
 your instagram photos are created.
 
 In MATLAB, matrix indexing starts with the row index first, then the column
-index. So (1,1) points to the upper left value, first row first column. (2,1)
-points to the second row first column, and (1,2) points to the first row second column.
-If you want to index multiple columns in a row or a whole row, you
-can use the colon to give a range of values.
+index. So (1,1) points to the upper left value, first row first column.  (2,1)
+points to the second row first column, and (1,2) points to the first row second
+column.
+
+If you want to index multiple columns in a row or a whole row,
+you can use the colon to give a range of values.
+
+You can assign values to a position in a matrix and print the matrix out as
+well.
 
 Matlab include a rich library for plotting. If we look back at our image matrix
-we created earlier, the image is made up of different components. There is a red
-component, a green component, and a blue component. We can plot the red
+we created earlier, the image is made up of different components.  There is a
+red component, a green component, and a blue component. We can plot the red
 component of the third row by first creating a vector that holds the red
-component of all columns from the third row. Next we plot that using the vector
-length to create an x vector. We can add a title and labels to the axis easily. On
-top of that, we can plot the green component using the same method. Lastly we
-can add a legend.
+component of all columns from the third row.
+
+Next we plot that using the vector length to create an x vector.
+
+We can add a title and labels to the axis easily.
+
+On top of that, we can plot the green component using the same method.
+
+Lastly we can add a legend.
 
 By default, MATLAB just uses small filled in circles for the points in the
 plot, but this can be customized by using a language they developed for
 describing different colors, line types and shapes.
 
-In MATLAB, you can create functions by using the "function" keyword. In this
+In MATLAB, you can create functions by using the "function" keyword.  In this
 example, the function name is "edgematrix" and it accepts two input parameters
 "n" and "orient". we also define a single return value "m".
 
@@ -69,17 +94,20 @@ keywords. They can be combined with functions like strcmp to use a string
 comparisons as a condition.
 
 But I have to warn you, If you find yourself writing loops to traverse
-matricies and perform aritmetic operations, youre probably doing something
-wrong. MATLAB is really good at performing matrix operations, so you should
-always be thinking how can I perform my math using matrix operations. Thats the
-MATLAB way!.
+matricies and perform aritmetic operations, you're probably doing something
+wrong.
+
+MATLAB is really good at performing matrix operations, so you should always be
+thinking how can I perform my math using matrix operations. Thats the MATLAB
+way!.
 
 MATLAB includes a few functions for simple input and output. The disp()
-function is used to display text to the user. The input() function retrieves
-values from the user. If you want to read in a string value, you have to tell
-input() to store the value as a string, otherwise it will store the value as a
-number or array of numbers. You run your program by calling the script name on
-the command line.
+function is used to display text to the user.
+
+The input() function retrieves values from the user. If you want to read in a
+string value, you have to tell input() to store the value as a string,
+otherwise it will store the value as a number or array of numbers.  You run
+your program by calling the script name on the command line.
 
 There are a ton of resources available on the web to help you if you get stuck
 with something in MATLAB. There is also a presentation on nanohub.org that
